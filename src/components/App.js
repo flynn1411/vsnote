@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../contexts/firebaseContext";
+import Home from "./Home";
+import SignIn from "./SignIn";
 
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(false);
+  const {user} = useContext(AuthContext);
 
   function changeTheme(){
     setDarkTheme(!darkTheme);
   }
+
+  //console.log(user);
 
   return (
     <div className={`App ${darkTheme && 'dark'}`}>
@@ -15,29 +21,12 @@ function App() {
         dark:bg-darkBrown
         transition-all
         duration-1000
+        text-lightText
         ">
-
-        <div className='
-          h-[50vh]
-          bg-transparent
-          grid
-          place-items-center
-        '>
-          <button 
-            onClick={()=>{changeTheme()}}
-            className="
-              text-lightText
-              "
-          >
-            Tema oscuro
-          </button>
-        </div>
-        <div className='
-          h-[50vh]
-          bg-transparent
-        '>
-
-        </div>
+          { user ? 
+            <Home changeTheme={changeTheme}/> : 
+            <SignIn setTemaActual={changeTheme} /> 
+          }
       </div>
     </div>
   );

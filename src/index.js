@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import { AuthProvider } from './contexts/firebaseContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
-    <App />
+    <AuthProvider>
+        <App />
+    </AuthProvider>
   
 );
 

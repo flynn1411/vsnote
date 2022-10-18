@@ -18,6 +18,10 @@ module.exports = {
       "darkGreen": "#2C3639",
       "darkBrown": "#594545"
     },
+    fontFamily: {
+      'ubuntu': ['Ubuntu', 'sans-serif'],
+      'firasans':['Fira Sans', 'sans-serif']
+    },
     extend: {},
   },
   plugins: [],
